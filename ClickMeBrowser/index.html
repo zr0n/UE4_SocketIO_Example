@@ -1,0 +1,25 @@
+<!-- Browser client -->
+<html>
+	<head>
+	<script src="/socket.io/socket.io.js"></script>
+	<script>
+		const start = () =>{
+			console.log(document)
+			const socket = io('ws://localhost:3000');
+			document.querySelector("#jump-button").onclick = () => {
+				console.log("Button Clicked")
+				console.log("Sending Signal to UE4 clients")
+				socket.emit("button_click")
+			}
+			
+			socket.emit("browser_user_connected")
+			
+			
+		};
+	</script>
+	</head>
+	<body onload="start()">
+		<a href="#" id="jump-button"> Click me to jump </a>
+	</body>
+	
+</html>
